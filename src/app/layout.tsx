@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
+const metadata = {
   title: "Cuisine Connect",
+  description: "AI platform for food lovers to connect and share their passion",
   icons: {
     icon: "/favicon.ico",
   },
@@ -19,9 +20,17 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          "min-h-screen bg-white font-sans text-black antialiased",
+          fontSans.variable
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 };
 
 export default Layout;
+export { metadata };
