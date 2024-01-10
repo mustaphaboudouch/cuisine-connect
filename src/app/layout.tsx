@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
 
+import { AppLayout } from "@/components/layout";
+
 const metadata = {
   title: "Cuisine Connect",
   description: "AI platform for food lovers to connect and share their passion",
@@ -26,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
           fontSans.variable
         )}
       >
-        {children}
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );
