@@ -10,7 +10,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main>{children}</main>
+      <main className="container py-10">{children}</main>
     </div>
   );
 };

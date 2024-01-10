@@ -1,8 +1,10 @@
+import { SearchInput } from "@/components/search-input";
+
 const Page = () => {
   return (
-    <div className="m-10">
-      <h1 className="text-3xl font-semibold">Cuisine Connect</h1>
-    </div>
+    <>
+      <SearchInput />
+    </>
   );
 };
 
