@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { AppLayout } from "@/components/layout";
+import { QueryProvider } from "@/components/query-provider";
 
 import "@/styles/globals.css";
-
-import { AppLayout } from "@/components/layout";
 
 const metadata = {
   title: "Cuisine Connect",
@@ -28,7 +28,9 @@ const Layout = ({ children }: LayoutProps) => {
           fontSans.variable
         )}
       >
-        <AppLayout>{children}</AppLayout>
+        <QueryProvider>
+          <AppLayout>{children}</AppLayout>
+        </QueryProvider>
       </body>
     </html>
   );

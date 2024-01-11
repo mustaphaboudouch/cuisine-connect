@@ -1,9 +1,7 @@
-import { SearchInput } from "@/components/search-input";
-
 const Page = () => {
   return (
     <>
-      <SearchInput />
+      <h1>Cuisine Connect</h1>
     </>
   );
 };
