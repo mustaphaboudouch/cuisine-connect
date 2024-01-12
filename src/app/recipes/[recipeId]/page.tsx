@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Accompaniments } from "./accompaniments";
 import { Comments } from "./comments";
+import { Recommendations } from "./recommendations";
 import { ShoppingList } from "./shopping-list";
 
 type PageProps = {
@@ -66,6 +67,10 @@ const Page = ({ params: { recipeId } }: PageProps) => {
         <li>Category: {recipe?.category.name}</li>
         <li>Description: {recipe?.description}</li>
       </ul>
+
+      <br />
+
+      <Recommendations recipeId={recipeId} />
 
       <br />
 

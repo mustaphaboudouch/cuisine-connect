@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 
 async function GET(request: Request) {
   try {
-    // SELECT id, dot_product(vector, JSON_ARRAY_PACK('[1, 0, 0]')) AS score FROM recipies WHERE score > 0.5 ORDER BY score DESC LIMIT 4;
+    // SELECT id, dot_product(vector, JSON_ARRAY_PACK('[1, 0, 0]')) AS score FROM recipies WHERE score > 0.5 ORDER BY score DESC;
     // SELECT id, dot_product(vector, JSON_ARRAY_PACK('[1, 0, 0]')) AS score FROM recipies ORDER BY score DESC LIMIT 4;
 
     const url = new URL(request.url);
