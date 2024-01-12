@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { signInSchema } from "@/lib/validation";
+import { Input } from "@/components/input";
 
 type SignInFormData = z.infer<typeof signInSchema>;
 
@@ -51,14 +52,20 @@ export default function Page() {
       <h1 className="text-xl font-bold">Sign In</h1>
 
       <form onSubmit={handleSubmit(onSignIn)}>
-        <input {...register("email")} type="email" placeholder="Email" />
-        {errors.email && <p>{errors.email.message}</p>}
-        <input
-          {...register("password")}
-          type="password"
-          placeholder="Password"
+        <Input
+          {...register("email")}
+          error={errors.email && errors.email.message}
+          type="email"
+          label="Adresse email"
+          placeholder="Adresse email"
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        <Input
+          {...register("password")}
+          error={errors.password && errors.password.message}
+          type="password"
+          label="Mot de passe"
+          placeholder="Mot de passe"
+        />
         <button type="submit" disabled={isPending}>
           Sign In
         </button>

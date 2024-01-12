@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { signUpSchema } from "@/lib/validation";
+import { Input } from "@/components/input";
 
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
@@ -51,22 +52,32 @@ const SignUp = () => {
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSubmit(onSignUp)}>
-        <input
+        <Input
           {...register("firstname")}
-          type="text"
-          placeholder="First Name"
+          error={errors.firstname && errors.firstname.message}
+          label="Prénom"
+          placeholder="Prénom"
         />
-        {errors.firstname && <p>{errors.firstname.message}</p>}
-        <input {...register("lastname")} type="text" placeholder="Last Name" />
-        {errors.lastname && <p>{errors.lastname.message}</p>}
-        <input {...register("email")} type="email" placeholder="Email" />
-        {errors.email && <p>{errors.email.message}</p>}
-        <input
+        <Input
+          {...register("lastname")}
+          error={errors.lastname && errors.lastname.message}
+          label="Nom"
+          placeholder="Nom"
+        />
+        <Input
+          {...register("email")}
+          error={errors.email && errors.email.message}
+          type="email"
+          label="Adresse email"
+          placeholder="Adresse email"
+        />
+        <Input
           {...register("password")}
+          error={errors.password && errors.password.message}
           type="password"
-          placeholder="Password"
+          label="Mot de passe"
+          placeholder="Mot de passe"
         />
-        {errors.password && <p>{errors.password.message}</p>}
         <button type="submit" disabled={isPending}>
           Sign Up
         </button>

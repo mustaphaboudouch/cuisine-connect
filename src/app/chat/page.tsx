@@ -3,13 +3,15 @@
 import * as React from "react";
 import { useMutation } from "@tanstack/react-query";
 
+import { Input } from "@/components/input";
+
 type Message = {
   role: "user" | "system";
   content: string;
 };
 
 const Page = () => {
-  const inputRef = React.useRef<HTMLTextAreaElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [answer, setAnswer] = React.useState<string>("");
 
@@ -86,14 +88,13 @@ const Page = () => {
       </ul>
 
       <form onSubmit={(e) => onSubmit(e)}>
-        <textarea
+        <Input
           ref={inputRef}
           name="question"
           placeholder="Ask your question..."
-          className="border border-black"
         />
-        <button type="submit">
-          Send {isPending && <span>(Loading...)</span>}
+        <button type="submit" disabled={isPending}>
+          Send
         </button>
       </form>
     </>

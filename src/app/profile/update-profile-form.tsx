@@ -9,6 +9,7 @@ import type { z } from "zod";
 
 import { updateProfileSchema } from "@/lib/validation";
 import { allergens } from "@/constants/allergens";
+import { Input } from "@/components/input";
 import { queryClient } from "@/components/query-provider";
 
 type UpdateProfileFormData = z.infer<typeof updateProfileSchema>;
@@ -60,10 +61,18 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstname")} type="text" placeholder="First Name" />
-      {errors.firstname && <p>{errors.firstname.message}</p>}
-      <input {...register("lastname")} type="text" placeholder="Last Name" />
-      {errors.lastname && <p>{errors.lastname.message}</p>}
+      <Input
+        {...register("firstname")}
+        error={errors.firstname && errors.firstname.message}
+        label="Prénom"
+        placeholder="Prénom"
+      />
+      <Input
+        {...register("lastname")}
+        error={errors.lastname && errors.lastname.message}
+        label="Nom"
+        placeholder="Nom"
+      />
       <div>
         {allergens.map((allergen) => (
           <label key={allergen}>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useMutation } from "@tanstack/react-query";
 
+import { Textarea } from "@/components/input";
 import { queryClient } from "@/components/query-provider";
 
 type CommentsProps = {
@@ -93,14 +94,13 @@ const Comments = ({ recipeId, comments }: CommentsProps) => {
       </ul>
 
       <form onSubmit={(e) => onSubmit(e)}>
-        <textarea
+        <Textarea
           ref={inputRef}
           name="comment"
           placeholder="Enter your comment..."
-          className="border border-black"
         />
-        <button type="submit">
-          Send {isPending && <span>(Loading...)</span>}
+        <button type="submit" disabled={isPending}>
+          Commenter
         </button>
       </form>
     </div>
