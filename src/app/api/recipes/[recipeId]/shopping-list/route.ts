@@ -30,26 +30,14 @@ const routeContextSchema = z.object({
 
 function getPrompt(recipe: RecipeWithIngredients) {
   return `
-Génèrez une liste d'achats pour préparer cette recette. La recette a pour nom "${
-    recipe.name
-  }" et la description suivante : "${
+La recette "${recipe.name}" est décrite comme suit : "${
     recipe.description
-  }". Les ingrédients nécessaires pour cette recette sont les suivants :
+  }". Les ingrédients nécessaires pour cette recette sont :
 
 ${recipe.ingredients
   .map((ingredient) => `- ${ingredient.ingredient.name}`)
   .join("\n")}
-
-Ajoutez également des ingrédients de base tels que sel, poivre, huile, etc., s'ils ne sont pas déjà inclus dans la liste. Assurez-vous que la liste d'achats est complète.
-Formattez la réponse comme un tableau des noms des achats.
-
-Exemple de format :
-[
-  { "name": "Nom de l'achat 1" },
-  { "name": "Nom de l'achat 2" },
-  { "name": "Nom de l'achat 3" },
-  { "name": "Nom de l'achat 4" },
-]`;
+`;
 }
 
 async function GET(
@@ -88,6 +76,16 @@ async function GET(
     const completions = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
+        {
+          role: "system",
+          content: `Génèrez une liste d'achats détaillée pour la recette fournie. La liste doit inclure tous les ingrédients nécessaires, y compris des ingrédients de base comme sel, poivre, huile, etc., si ces derniers ne sont pas déjà listés. Assurez-vous que la liste d'achats est complète, pratique pour l'utilisateur et formatée en JSON, avec chaque élément représentant un article à acheter. Utilisez le format suivant pour chaque élément de la liste :
+          [
+            { 'name': 'Nom de l'achat 1' },
+            { 'name': 'Nom de l'achat 2' },
+            { 'name': 'Nom de l'achat 3' },
+            { 'name': 'Nom de l'achat 4' },
+          ]`,
+        },
         {
           role: "user",
           content: getPrompt(recipe),
