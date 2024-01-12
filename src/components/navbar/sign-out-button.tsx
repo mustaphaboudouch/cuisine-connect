@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
+import { Button } from "@/components/button";
+
 export const SignOutButton = () => {
   const router = useRouter();
 
@@ -29,8 +31,8 @@ export const SignOutButton = () => {
   });
 
   return (
-    <button onClick={() => mutate()} disabled={isPending}>
-      Sign Out
-    </button>
+    <Button onClick={() => mutate()} disabled={isPending}>
+      Déconnecter
+    </Button>
   );
 };

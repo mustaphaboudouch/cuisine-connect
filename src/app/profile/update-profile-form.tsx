@@ -9,6 +9,7 @@ import type { z } from "zod";
 
 import { updateProfileSchema } from "@/lib/validation";
 import { allergens } from "@/constants/allergens";
+import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { queryClient } from "@/components/query-provider";
 
@@ -60,7 +61,7 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <Input
         {...register("firstname")}
         error={errors.firstname && errors.firstname.message}
@@ -73,9 +74,9 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
         label="Nom"
         placeholder="Nom"
       />
-      <div>
+      <div className="grid grid-cols-3 gap-1">
         {allergens.map((allergen) => (
-          <label key={allergen}>
+          <label key={allergen} className="flex items-center gap-2">
             <input
               {...register("allergens", { required: true })}
               type="checkbox"
@@ -85,9 +86,9 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
           </label>
         ))}
       </div>
-      <button type="submit" disabled={isPending}>
-        Update
-      </button>
+      <Button type="submit" disabled={isPending}>
+        Mettre à jour
+      </Button>
     </form>
   );
 };

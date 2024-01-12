@@ -29,10 +29,11 @@ const Recommendations = ({ recipeId }: RecommendationsProps) => {
 
   return (
     <div>
-      <h2>Recommendations</h2>
-      <ul>
+      <h2 className="mb-4 text-2xl font-bold">Recommendations</h2>
+
+      <ul className="list-disc pl-4">
         {recommendations?.map((recommendation, index) => (
-          <li key={index}>
+          <li key={index} className="hover:underline">
             <Link href={`/recipes/${recommendation.id}`}>
               {recommendation?.name}
             </Link>

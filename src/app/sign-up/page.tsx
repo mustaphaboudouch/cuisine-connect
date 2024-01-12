@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { signUpSchema } from "@/lib/validation";
+import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 
 type SignUpFormData = z.infer<typeof signUpSchema>;
@@ -49,9 +50,9 @@ const SignUp = () => {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1 className="mb-6 text-3xl font-bold">S inscrire</h1>
 
-      <form onSubmit={handleSubmit(onSignUp)}>
+      <form onSubmit={handleSubmit(onSignUp)} className="flex flex-col gap-4">
         <Input
           {...register("firstname")}
           error={errors.firstname && errors.firstname.message}
@@ -78,9 +79,9 @@ const SignUp = () => {
           label="Mot de passe"
           placeholder="Mot de passe"
         />
-        <button type="submit" disabled={isPending}>
-          Sign Up
-        </button>
+        <Button type="submit" disabled={isPending}>
+          S inscrire
+        </Button>
       </form>
     </div>
   );

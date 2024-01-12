@@ -31,8 +31,9 @@ const ShoppingList = ({ recipeId }: ShoppingListProps) => {
 
   return (
     <div>
-      <h2>Shopping List</h2>
-      <ul>
+      <h2 className="mb-4 text-2xl font-bold">Liste d achats</h2>
+
+      <ul className="list-disc pl-4">
         {shoppingList?.map((item, index) => <li key={index}>{item.name}</li>)}
       </ul>
     </div>

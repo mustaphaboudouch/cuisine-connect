@@ -31,8 +31,9 @@ const Accompaniments = ({ recipeId }: AccompanimentsProps) => {
 
   return (
     <div>
-      <h2>Accompagnements</h2>
-      <ul>
+      <h2 className="mb-4 text-2xl font-bold">Accompagnements</h2>
+
+      <ul className="list-disc pl-4">
         {accompaniments?.map((accompaniment, index) => (
           <li key={index}>{accompaniment?.name}</li>
         ))}

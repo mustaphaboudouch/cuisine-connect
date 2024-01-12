@@ -63,25 +63,20 @@ const Page = ({ params: { recipeId } }: PageProps) => {
   return (
     <>
       <ul>
-        <li>Name: {recipe?.name}</li>
-        <li>Category: {recipe?.category.name}</li>
-        <li>Description: {recipe?.description}</li>
+        <li className="mb-2 text-3xl font-bold">{recipe?.name}</li>
+        <li className="inline-flex rounded bg-blue-100 px-2 py-1 text-sm font-medium text-blue-800">
+          {recipe?.category.name}
+        </li>
+        <li className="mt-2">{recipe?.description}</li>
       </ul>
 
       <br />
-
       <Recommendations recipeId={recipeId} />
-
       <br />
-
       <Accompaniments recipeId={recipeId} />
-
       <br />
-
       <ShoppingList recipeId={recipeId} />
-
       <br />
-
       <Comments recipeId={recipeId} comments={recipe?.comments || []} />
     </>
   );

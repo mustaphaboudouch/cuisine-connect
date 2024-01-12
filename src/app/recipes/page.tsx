@@ -5,6 +5,10 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Recipe } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
+import { SearchIcon } from "lucide-react";
+
+import { Button } from "@/components/button";
+import { Input } from "@/components/input";
 
 const Page = () => {
   const router = useRouter();
@@ -58,21 +62,31 @@ const Page = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
+      <form onSubmit={onSubmit} className="flex items-center gap-2">
+        <Input
           type="search"
           name="search"
-          className="border border-black"
+          placeholder="Rechercher des recettes..."
           defaultValue={search || ""}
+          className="w-full"
         />
-        <button type="submit">Search</button>
+        <Button type="submit" className="w-12">
+          <SearchIcon className="h-5 w-5 shrink-0" />
+        </Button>
       </form>
 
-      {recipes?.map((recipe) => (
-        <div key={recipe.id}>
-          <Link href={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-        </div>
-      ))}
+      <div className="mt-6 grid grid-cols-2 gap-4">
+        {recipes?.map((recipe) => (
+          <div
+            key={recipe.id}
+            className="rounded-lg border border-gray-300 bg-gray-50 p-4 hover:bg-gray-100"
+          >
+            <Link href={`/recipes/${recipe.id}`} className="text-sm">
+              {recipe.name}
+            </Link>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

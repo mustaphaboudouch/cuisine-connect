@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -19,6 +20,8 @@ async function POST(
   context: z.infer<typeof routeContextSchema>
 ) {
   return handleAsyncError(async () => {
+    const userId = headers().get("X-USER-ID");
+
     const body = await request.json();
     const { params } = routeContextSchema.parse(context);
     const { comment: text } = requestBodySchema.parse(body);
@@ -28,7 +31,7 @@ async function POST(
         content: text,
         user: {
           connect: {
-            id: "cjklsdjfsl1",
+            id: userId!,
           },
         },
         recipe: {

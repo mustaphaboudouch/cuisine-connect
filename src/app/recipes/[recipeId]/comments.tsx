@@ -1,6 +1,9 @@
 import * as React from "react";
-import { useMutation } from "@tanstack/react-query";
+import type { User } from "@prisma/client";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Trash2Icon } from "lucide-react";
 
+import { Button } from "@/components/button";
 import { Textarea } from "@/components/input";
 import { queryClient } from "@/components/query-provider";
 
@@ -20,6 +23,14 @@ type CommentsProps = {
 
 const Comments = ({ recipeId, comments }: CommentsProps) => {
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
+
+  const { data: user } = useQuery<User>({
+    queryKey: ["user"],
+    queryFn: async function () {
+      const res = await fetch("/api/user");
+      return res.json();
+    },
+  });
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (comment: string) => {
@@ -79,29 +90,44 @@ const Comments = ({ recipeId, comments }: CommentsProps) => {
 
   return (
     <div>
-      <h2>Comments</h2>
-      <ul>
-        {isPendingDelete && <span>Loading...</span>}
+      <h2 className="mb-4 text-2xl font-bold">Comments</h2>
+
+      <ul className="mb-4 flex flex-col gap-4">
         {comments.map((comment, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className="flex items-center justify-between rounded-lg bg-gray-100 p-4 text-sm"
+          >
             <p>
-              {comment.user.firstname} {comment.user.lastname}:{" "}
-              {comment.content}
+              <span className="font-bold">
+                {comment.user.firstname} {comment.user.lastname}
+              </span>{" "}
+              : {comment.content}
             </p>
-            <button onClick={() => deleteComment(comment.id)}>Delete</button>
+            {user?.id === comment.user.id && (
+              <button
+                onClick={() => deleteComment(comment.id)}
+                disabled={isPendingDelete}
+              >
+                <Trash2Icon className="h-5 w-5 text-red-500" />
+              </button>
+            )}
           </li>
         ))}
       </ul>
 
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className="flex flex-col items-start gap-2"
+      >
         <Textarea
           ref={inputRef}
           name="comment"
           placeholder="Enter your comment..."
         />
-        <button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending}>
           Commenter
-        </button>
+        </Button>
       </form>
     </div>
   );
