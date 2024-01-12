@@ -28,6 +28,8 @@ const PRIVATE_API_ROUTES = [
   "/api/chat",
   "/api/comments",
   "/api/recipes",
+  "/api/user",
+  "/api/profile",
   "/api/sign-out",
 ];
 
