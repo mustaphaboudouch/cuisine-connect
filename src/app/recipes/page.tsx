@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Recipe } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
-import { SearchIcon } from "lucide-react";
+import { LoaderIcon, SearchIcon } from "lucide-react";
 
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
@@ -49,15 +49,23 @@ const Page = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoaderIcon className="h-6 w-6 animate-spin" />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error!</div>;
+    return (
+      <div className="w-full border border-red-600 bg-red-50 p-4 text-sm font-medium">
+        Something went wrong. Please reload the page.
+      </div>
+    );
   }
 
   if (recipes?.length === 0) {
-    return <div>No recipes found.</div>;
+    return <div className="p-4 text-center">Aucune recette trouvée.</div>;
   }
 
   return (

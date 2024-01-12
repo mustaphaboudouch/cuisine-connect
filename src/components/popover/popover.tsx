@@ -11,7 +11,7 @@ const Popover = () => {
   return (
     <PopoverPrimitive.Root>
       <PopoverPrimitive.Trigger asChild>
-        <Button className="absolute bottom-10 right-10 h-20 w-20 rounded-full">
+        <Button className="fixed bottom-10 right-10 h-20 w-20 rounded-full">
           <ChefHatIcon />
         </Button>
       </PopoverPrimitive.Trigger>

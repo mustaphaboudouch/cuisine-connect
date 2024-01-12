@@ -2,6 +2,7 @@
 
 import type { User } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
+import { LoaderIcon } from "lucide-react";
 
 import { UpdateProfileForm } from "./update-profile-form";
 
@@ -19,11 +20,19 @@ const Page = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoaderIcon className="h-6 w-6 animate-spin" />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error!</div>;
+    return (
+      <div className="w-full border border-red-600 bg-red-50 p-4 text-sm font-medium">
+        Something went wrong. Please reload the page.
+      </div>
+    );
   }
 
   return (
