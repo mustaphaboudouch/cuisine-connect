@@ -2,6 +2,7 @@ import React from "react";
 
 import { Logo } from "@/components/logo";
 
+import { SignOutButton } from "./sign-out-button";
 import { UserMenu } from "./user-menu";
 
 const Navbar = () => {
@@ -9,6 +10,7 @@ const Navbar = () => {
     <header className="border-b border-gray-300 bg-white">
       <div className="container flex h-20 items-center justify-between">
         <Logo />
+        <SignOutButton />
         <UserMenu
           user={{
             id: "1",
