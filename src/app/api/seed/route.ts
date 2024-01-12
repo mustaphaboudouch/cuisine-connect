@@ -37,7 +37,7 @@ ${recipe.ingredients.map(
 `;
 }
 
-async function GET() {
+async function POST() {
   try {
     const vectorDb = await mysql.createConnection({
       host: "svc-f1f2615b-b52b-4e67-aede-103161570f7c-dml.aws-frankfurt-1.svc.singlestore.com",
@@ -134,4 +134,4 @@ async function GET() {
   }
 }
 
-export { GET };
+export { POST };
