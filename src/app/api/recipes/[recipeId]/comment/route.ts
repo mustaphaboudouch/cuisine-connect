@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
+import { handleAsyncError } from "@/lib/async-error";
 import { db } from "@/lib/db";
 
 const requestBodySchema = z.object({
@@ -17,7 +18,7 @@ async function POST(
   request: Request,
   context: z.infer<typeof routeContextSchema>
 ) {
-  try {
+  return handleAsyncError(async () => {
     const body = await request.json();
     const { params } = routeContextSchema.parse(context);
     const { comment: text } = requestBodySchema.parse(body);
@@ -39,14 +40,7 @@ async function POST(
     });
 
     return NextResponse.json(comment);
-  } catch (error) {
-    // validation errors
-    if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify(error.issues), { status: 422 });
-    }
-    // server errors
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { POST };

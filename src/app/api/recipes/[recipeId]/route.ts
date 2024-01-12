@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
+import { handleAsyncError } from "@/lib/async-error";
 import { db } from "@/lib/db";
 
 const routeContextSchema = z.object({
@@ -13,7 +14,7 @@ async function GET(
   request: Request,
   context: z.infer<typeof routeContextSchema>
 ) {
-  try {
+  return handleAsyncError(async () => {
     const { params } = routeContextSchema.parse(context);
 
     const recipe = await db.recipe.findUnique({
@@ -62,14 +63,7 @@ async function GET(
     }
 
     return NextResponse.json(recipe);
-  } catch (error) {
-    // validation errors
-    if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify(error.issues), { status: 422 });
-    }
-    // server errors
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { GET };

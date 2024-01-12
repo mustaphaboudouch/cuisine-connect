@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
 import { z } from "zod";
 
+import { handleAsyncError } from "@/lib/async-error";
 import { db } from "@/lib/db";
+import { getRecipePrompt } from "@/lib/openai";
+import { connectVectorDatabase } from "@/lib/vectorDb";
 
 const routeContextSchema = z.object({
   params: z.object({
@@ -10,43 +12,11 @@ const routeContextSchema = z.object({
   }),
 });
 
-type RecipeWithCategoryAndIngredients = {
-  id: string;
-  name: string;
-  description: string;
-  category: {
-    name: string;
-  };
-  ingredients: {
-    ingredient: {
-      name: string;
-      allergen: string | null;
-    };
-  }[];
-};
-
-function convertRecipeToText(recipe: RecipeWithCategoryAndIngredients) {
-  return `
-Nom: ${recipe.name}
-Description: ${recipe.description}
-Catégorie: ${recipe.category.name}
-Ingrédients:
-${recipe.ingredients.map(
-  (ingredient) =>
-    `- Nom : ${ingredient.ingredient.name}, Allergène : ${
-      ingredient.ingredient.allergen
-        ? ingredient.ingredient.allergen
-        : "Pas d'allergène"
-    }\n`
-)}
-`;
-}
-
 async function GET(
   request: Request,
   context: z.infer<typeof routeContextSchema>
 ) {
-  try {
+  return handleAsyncError(async () => {
     const { params } = routeContextSchema.parse(context);
 
     const recipe = await db.recipe.findUnique({
@@ -79,7 +49,7 @@ async function GET(
       return new Response(null, { status: 404 });
     }
 
-    const text = convertRecipeToText(recipe);
+    const text = getRecipePrompt(recipe);
     const res = await fetch("https://api.openai.com/v1/embeddings", {
       method: "POST",
       headers: {
@@ -93,13 +63,7 @@ async function GET(
     });
     const data = await res.json();
 
-    const vectorDb = await mysql.createConnection({
-      host: "svc-f1f2615b-b52b-4e67-aede-103161570f7c-dml.aws-frankfurt-1.svc.singlestore.com",
-      port: 3306,
-      database: "cuisineconnectdb",
-      user: "admin",
-      password: "8Q62UxZ2W2Nwt1oRrbEa7hEcA1LaqGzH",
-    });
+    const vectorDb = await connectVectorDatabase();
 
     const result = await vectorDb.execute(
       "SELECT id, dot_product(vector, JSON_ARRAY_PACK(?)) AS score FROM recipies WHERE score <> 1 ORDER BY score DESC LIMIT 4",
@@ -123,14 +87,7 @@ async function GET(
     });
 
     return NextResponse.json(recommendations);
-  } catch (error) {
-    // validation errors
-    if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify(error.issues), { status: 422 });
-    }
-    // server errors
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { GET };

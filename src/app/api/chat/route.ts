@@ -6,6 +6,8 @@ import {
 import type { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import { z } from "zod";
 
+import { handleAsyncError } from "@/lib/async-error";
+
 const requestBodySchema = z.object({
   messages: z.array(
     z.object({
@@ -16,7 +18,7 @@ const requestBodySchema = z.object({
 });
 
 async function POST(request: Request) {
-  try {
+  return handleAsyncError(async () => {
     const body = await request.json();
     const { messages } = requestBodySchema.parse(body);
 
@@ -86,14 +88,7 @@ async function POST(request: Request) {
     });
 
     return new Response(stream);
-  } catch (error) {
-    // validation errors
-    if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify(error.issues), { status: 422 });
-    }
-    // server errors
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { POST };

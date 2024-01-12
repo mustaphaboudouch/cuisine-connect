@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-import { z } from "zod";
 
+import { handleAsyncError } from "@/lib/async-error";
 import { db } from "@/lib/db";
+import { connectVectorDatabase } from "@/lib/vectorDb";
 
 type RecipeWithCategory = {
   id: string;
@@ -14,7 +14,7 @@ type RecipeWithCategory = {
 };
 
 async function GET(request: Request) {
-  try {
+  return handleAsyncError(async () => {
     const url = new URL(request.url);
     const search = decodeURIComponent(url.searchParams.get("search") || "");
 
@@ -47,13 +47,7 @@ async function GET(request: Request) {
       });
       const data = await res.json();
 
-      const vectorDb = await mysql.createConnection({
-        host: "svc-f1f2615b-b52b-4e67-aede-103161570f7c-dml.aws-frankfurt-1.svc.singlestore.com",
-        port: 3306,
-        database: "cuisineconnectdb",
-        user: "admin",
-        password: "8Q62UxZ2W2Nwt1oRrbEa7hEcA1LaqGzH",
-      });
+      const vectorDb = await connectVectorDatabase();
 
       const result = await vectorDb.execute(
         "SELECT id, dot_product(vector, JSON_ARRAY_PACK(?)) AS score FROM recipies WHERE score > 0.73 ORDER BY score DESC",
@@ -85,14 +79,7 @@ async function GET(request: Request) {
     }
 
     return NextResponse.json(recipes);
-  } catch (error) {
-    // validation errors
-    if (error instanceof z.ZodError) {
-      return new Response(JSON.stringify(error.issues), { status: 422 });
-    }
-    // server errors
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { GET };

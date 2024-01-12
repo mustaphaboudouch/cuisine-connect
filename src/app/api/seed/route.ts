@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
 
+import { handleAsyncError } from "@/lib/async-error";
 import { db } from "@/lib/db";
+import { getRecipePrompt } from "@/lib/openai";
+import { connectVectorDatabase } from "@/lib/vectorDb";
 
 import {
   categories,
@@ -11,50 +13,12 @@ import {
   users,
 } from "./data";
 
-type RecipeWithCategoryAndIngredients = {
-  id: string;
-  name: string;
-  description: string;
-  category: {
-    name: string;
-  };
-  ingredients: {
-    ingredient: {
-      name: string;
-      allergen: string | null;
-    };
-  }[];
-};
-
-function convertRecipeToText(recipe: RecipeWithCategoryAndIngredients) {
-  return `
-Nom: ${recipe.name}
-Description: ${recipe.description}
-Catégorie: ${recipe.category.name}
-Ingrédients:
-${recipe.ingredients.map(
-  (ingredient) =>
-    `- Nom : ${ingredient.ingredient.name}, Allergène : ${
-      ingredient.ingredient.allergen
-        ? ingredient.ingredient.allergen
-        : "Pas d'allergène"
-    }\n`
-)}
-`;
-}
-
 async function POST() {
-  try {
-    const vectorDb = await mysql.createConnection({
-      host: "svc-f1f2615b-b52b-4e67-aede-103161570f7c-dml.aws-frankfurt-1.svc.singlestore.com",
-      port: 3306,
-      database: "cuisineconnectdb",
-      user: "admin",
-      password: "8Q62UxZ2W2Nwt1oRrbEa7hEcA1LaqGzH",
-    });
+  return handleAsyncError(async () => {
+    const vectorDb = await connectVectorDatabase();
 
     /**
-     *
+     * Clear all tables
      */
 
     await vectorDb.execute("DELETE FROM recipies");
@@ -67,7 +31,7 @@ async function POST() {
     await db.user.deleteMany();
 
     /**
-     *
+     * Seed the database
      */
 
     await db.user.createMany({
@@ -90,6 +54,10 @@ async function POST() {
       data: recipeIngredient,
       skipDuplicates: true,
     });
+
+    /**
+     * Seed the vector database
+     */
 
     const allRecipes = await db.recipe.findMany({
       select: {
@@ -115,8 +83,7 @@ async function POST() {
     });
 
     for (const recipe of allRecipes) {
-      const text = convertRecipeToText(recipe);
-
+      const text = getRecipePrompt(recipe);
       const res = await fetch("https://api.openai.com/v1/embeddings", {
         method: "POST",
         headers: {
@@ -141,9 +108,7 @@ async function POST() {
     return NextResponse.json({
       message: "Database seeded successfully",
     });
-  } catch (error) {
-    return new Response(null, { status: 500 });
-  }
+  });
 }
 
 export { POST };
