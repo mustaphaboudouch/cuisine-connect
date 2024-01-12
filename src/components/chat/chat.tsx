@@ -3,14 +3,17 @@
 import * as React from "react";
 import { useMutation } from "@tanstack/react-query";
 
+import { cn } from "@/lib/utils";
 import { Input } from "@/components/input";
+
+import { Button } from "../button";
 
 type Message = {
   role: "user" | "system";
   content: string;
 };
 
-const Page = () => {
+const Chat = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [answer, setAnswer] = React.useState<string>("");
@@ -73,32 +76,41 @@ const Page = () => {
 
   return (
     <>
-      <ul>
+      <div className="flex flex-1 flex-col gap-2 overflow-auto p-4">
         {messages.map((message, index) => (
-          <li key={index}>
-            <span className="font-bold underline">{message.role}</span> :{" "}
+          <div
+            key={index}
+            className={cn("rounded-xl p-4 text-sm font-medium", {
+              "ml-10 bg-slate-800 text-white": message.role === "user",
+              "mr-10 bg-gray-200": message.role === "system",
+            })}
+          >
             {message.content}
-          </li>
+          </div>
         ))}
         {answer && (
-          <li>
-            <span className="font-bold underline">system</span> : {answer}
-          </li>
+          <div className="mr-10 rounded-xl bg-gray-200 p-4 text-sm font-medium">
+            {answer}
+          </div>
         )}
-      </ul>
+      </div>
 
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className="flex h-20 items-center gap-2 p-4"
+      >
         <Input
           ref={inputRef}
           name="question"
           placeholder="Ask your question..."
+          className="w-full"
         />
-        <button type="submit" disabled={isPending}>
-          Send
-        </button>
+        <Button type="submit" disabled={isPending}>
+          Envoyer
+        </Button>
       </form>
     </>
   );
 };
 
-export default Page;
+export { Chat };

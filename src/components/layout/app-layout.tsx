@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 
 import { Navbar } from "@/components/navbar";
 
+import { Popover } from "../popover/popover";
+
 type AppLayoutProps = {
   children: React.ReactNode;
 };
@@ -14,6 +16,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     <div className="min-h-screen">
       <Navbar userId={userId} />
       <main className="container py-10">{children}</main>
+      {userId && <Popover />}
     </div>
   );
 };
