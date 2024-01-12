@@ -36,7 +36,8 @@ const SignUp = () => {
     },
     onSuccess: function () {
       router.refresh();
-      router.push("/recipes");
+      router.replace("/recipes");
+      window.location.reload();
       console.log("User signed up successfully.");
     },
     onError: function () {

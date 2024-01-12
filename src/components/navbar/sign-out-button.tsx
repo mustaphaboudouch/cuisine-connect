@@ -22,7 +22,8 @@ export const SignOutButton = () => {
     },
     onSuccess: function () {
       router.refresh();
-      router.push("/sign-in");
+      router.replace("/sign-in");
+      window.location.reload();
       console.log("User signed out successfully.");
     },
     onError: function () {
