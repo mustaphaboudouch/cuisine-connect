@@ -15,4 +15,4 @@ const QueryProvider = ({ children }: QueryProviderProps) => {
   );
 };
 
-export { QueryProvider };
+export { QueryProvider, queryClient };

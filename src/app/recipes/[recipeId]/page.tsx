@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { Accompaniments } from "./accompaniments";
+import { Comments } from "./comments";
 import { ShoppingList } from "./shopping-list";
 
 type PageProps = {
@@ -16,15 +17,25 @@ type RecipeWithIngredients = {
   name: string;
   description: string;
 } & {
+  category: {
+    name: string;
+  };
   ingredients: {
     ingredient: {
       name: string;
       allergen: string | null;
     };
   }[];
-  category: {
-    name: string;
-  };
+  comments: {
+    id: string;
+    content: string;
+    createdAt: Date;
+    user: {
+      id: string;
+      firstname: string;
+      lastname: string;
+    };
+  }[];
 };
 
 const Page = ({ params: { recipeId } }: PageProps) => {
@@ -56,8 +67,17 @@ const Page = ({ params: { recipeId } }: PageProps) => {
         <li>Description: {recipe?.description}</li>
       </ul>
 
+      <br />
+
       <Accompaniments recipeId={recipeId} />
+
+      <br />
+
       <ShoppingList recipeId={recipeId} />
+
+      <br />
+
+      <Comments recipeId={recipeId} comments={recipe?.comments || []} />
     </>
   );
 };
