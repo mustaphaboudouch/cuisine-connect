@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { updateProfileSchema } from "@/lib/validation";
+import { allergens } from "@/constants/allergens";
 import { queryClient } from "@/components/query-provider";
 
 type UpdateProfileFormData = z.infer<typeof updateProfileSchema>;
@@ -27,6 +28,7 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
     defaultValues: {
       firstname: user.firstname,
       lastname: user.lastname,
+      allergens: (user.allergens as string[]) || [],
     },
   });
 
@@ -62,6 +64,18 @@ export const UpdateProfileForm = ({ user }: UpdateProfileFormProps) => {
       {errors.firstname && <p>{errors.firstname.message}</p>}
       <input {...register("lastname")} type="text" placeholder="Last Name" />
       {errors.lastname && <p>{errors.lastname.message}</p>}
+      <div>
+        {allergens.map((allergen) => (
+          <label key={allergen}>
+            <input
+              {...register("allergens", { required: true })}
+              type="checkbox"
+              value={allergen}
+            />
+            <span>{allergen}</span>
+          </label>
+        ))}
+      </div>
       <button type="submit" disabled={isPending}>
         Update
       </button>

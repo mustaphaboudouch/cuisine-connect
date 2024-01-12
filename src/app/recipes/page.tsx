@@ -52,6 +52,10 @@ const Page = () => {
     return <div>Error!</div>;
   }
 
+  if (recipes?.length === 0) {
+    return <div>No recipes found.</div>;
+  }
+
   return (
     <>
       <form onSubmit={onSubmit}>

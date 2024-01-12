@@ -18,6 +18,7 @@ export async function PATCH(req: Request) {
       data: {
         firstname: body.firstname,
         lastname: body.lastname,
+        allergens: body.allergens,
       },
       select: {
         id: true,
