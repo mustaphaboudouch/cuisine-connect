@@ -8,7 +8,7 @@ function isPublicRoute(pathname: string) {
   return PUBLIC_ROUTES.some((route) => pathname.startsWith(route));
 }
 
-const PUBLIC_API_ROUTES = ["/api/sign-in", "/api/sign-up", "/api/seed"];
+const PUBLIC_API_ROUTES = ["/api/sign-in", "/api/sign-up"];
 
 function isPublicApiRoute(pathname: string) {
   return PUBLIC_API_ROUTES.some((route) => pathname.startsWith(route));
