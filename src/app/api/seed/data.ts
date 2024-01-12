@@ -68,147 +68,147 @@ const recipes = [
   {
     id: "ijbzr1w72q",
     categoryId: "hrupu4tmkk",
-    name: "Salade de Quinoa Végétalienne",
+    name: "Salade de Quinoa Végétalienne #1",
     description:
       "Ce salade de quinoa végétalienne est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "2ycad85a56",
     categoryId: "k3ltj8nt8e",
-    name: "Tacos aux Légumes Rôtis",
+    name: "Tacos aux Légumes Rôtis #1",
     description:
       "Savourez la richesse de ce tacos aux légumes rôtis, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "jg42jcwgdg",
     categoryId: "k3ltj8nt8e",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #1",
     description:
       "Plongez dans l'essence de ce sauté végétarien, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "9k2yy0stpm",
     categoryId: "k3ltj8nt8e",
-    name: "Ailes de Chou-fleur Buffalo",
+    name: "Ailes de Chou-fleur Buffalo #1",
     description:
       "Plongez dans l'essence de ce ailes de chou-fleur buffalo, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "uuefuuwf4d",
     categoryId: "hrupu4tmkk",
-    name: "Tacos aux Légumes Rôtis",
+    name: "Tacos aux Légumes Rôtis #2",
     description:
       "Plongez dans l'essence de ce tacos aux légumes rôtis, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "mzyenvoxmu",
     categoryId: "yqqod1wczh",
-    name: "Pâtes Sans Gluten",
+    name: "Pâtes Sans Gluten #1",
     description:
       "Savourez la richesse de ce pâtes sans gluten, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "wbysbiarex",
     categoryId: "scl9ildmp4",
-    name: "Pâtes Sans Gluten",
+    name: "Pâtes Sans Gluten #2",
     description:
       "Savourez la richesse de ce pâtes sans gluten, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "fh26vj01ot",
     categoryId: "hrupu4tmkk",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #2",
     description:
       "Dégustez les couches complexes de saveurs dans notre sauté végétarien, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "4namc4doz1",
     categoryId: "yqqod1wczh",
-    name: "Bol de Falafel Méditerranéen",
+    name: "Bol de Falafel Méditerranéen #1",
     description:
       "Dégustez les couches complexes de saveurs dans notre bol de falafel méditerranéen, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "k02jdrq1mc",
     categoryId: "yqqod1wczh",
-    name: "Tacos aux Légumes Rôtis",
+    name: "Tacos aux Légumes Rôtis #3",
     description:
       "Savourez la richesse de ce tacos aux légumes rôtis, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "z6bws9j4c5",
     categoryId: "scl9ildmp4",
-    name: "Salade de Quinoa Végétalienne",
+    name: "Salade de Quinoa Végétalienne #2",
     description:
       "Ce salade de quinoa végétalienne est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "vyh89kamrg",
     categoryId: "scl9ildmp4",
-    name: "Risotto aux Champignons",
+    name: "Risotto aux Champignons #1",
     description:
       "Ce risotto aux champignons est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "w6pq5san30",
     categoryId: "hrupu4tmkk",
-    name: "Salade de Quinoa Végétalienne",
+    name: "Salade de Quinoa Végétalienne #3",
     description:
       "Savourez la richesse de ce salade de quinoa végétalienne, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "oszsa5fguc",
     categoryId: "k3ltj8nt8e",
-    name: "Pâtes Sans Gluten",
+    name: "Pâtes Sans Gluten #3",
     description:
       "Ce pâtes sans gluten est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "jowlcinb6a",
     categoryId: "k3ltj8nt8e",
-    name: "Risotto aux Champignons",
+    name: "Risotto aux Champignons #2",
     description:
       "Dégustez les couches complexes de saveurs dans notre risotto aux champignons, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "hdnzvd0nju",
     categoryId: "k3ltj8nt8e",
-    name: "Poivrons Farcis",
+    name: "Poivrons Farcis #1",
     description:
       "Ce poivrons farcis est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "2cdxpnydxb",
     categoryId: "yqqod1wczh",
-    name: "Poivrons Farcis",
+    name: "Poivrons Farcis #2",
     description:
       "Plongez dans l'essence de ce poivrons farcis, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "8xyb594s17",
     categoryId: "ulf8ikwjlm",
-    name: "Burger Végétarien",
+    name: "Burger Végétarien #1",
     description:
       "Ce burger végétarien est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "ajzsys0odr",
     categoryId: "hrupu4tmkk",
-    name: "Salade de Quinoa Végétalienne",
+    name: "Salade de Quinoa Végétalienne #4",
     description:
       "Savourez la richesse de ce salade de quinoa végétalienne, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "wi8r718e1q",
     categoryId: "hrupu4tmkk",
-    name: "Risotto aux Champignons",
+    name: "Risotto aux Champignons #3",
     description:
       "Savourez la richesse de ce risotto aux champignons, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "6ntro3pfbg",
     categoryId: "hrupu4tmkk",
-    name: "Ailes de Chou-fleur Buffalo",
+    name: "Ailes de Chou-fleur Buffalo #2",
     description:
       "Plongez dans l'essence de ce ailes de chou-fleur buffalo, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
@@ -222,126 +222,126 @@ const recipes = [
   {
     id: "peh9b3kker",
     categoryId: "ulf8ikwjlm",
-    name: "Pâtes Sans Gluten",
+    name: "Pâtes Sans Gluten #4",
     description:
       "Savourez la richesse de ce pâtes sans gluten, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "hq2tj8dae7",
     categoryId: "k3ltj8nt8e",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #3",
     description:
       "Plongez dans l'essence de ce sauté végétarien, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "afxb4mqhhw",
     categoryId: "k3ltj8nt8e",
-    name: "Soupe aux Légumes",
+    name: "Soupe aux Légumes #1",
     description:
       "Dégustez les couches complexes de saveurs dans notre soupe aux légumes, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "sd5fhvqegx",
     categoryId: "hrupu4tmkk",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #4",
     description:
       "Dégustez les couches complexes de saveurs dans notre sauté végétarien, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "lige6lktws",
     categoryId: "ulf8ikwjlm",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #1",
     description:
       "Plongez dans l'essence de ce curry vert thaï, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "i3moj6hav8",
     categoryId: "scl9ildmp4",
-    name: "Risotto aux Champignons",
+    name: "Risotto aux Champignons #4",
     description:
       "Plongez dans l'essence de ce risotto aux champignons, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "ihz2fgh4aa",
     categoryId: "scl9ildmp4",
-    name: "Burger Végétarien",
+    name: "Burger Végétarien #2",
     description:
       "Savourez la richesse de ce burger végétarien, où chaque bouchée offre un équilibre harmonieux entre goût et nutrition, idéal pour les amateurs de cuisine gastronomique.",
   },
   {
     id: "jna45nlbfb",
     categoryId: "scl9ildmp4",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #2",
     description:
       "Ce curry vert thaï est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "zl69s5kh2d",
     categoryId: "yqqod1wczh",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #3",
     description:
       "Ce curry vert thaï est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "7vd59i3lke",
     categoryId: "k3ltj8nt8e",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #5",
     description:
       "Dégustez les couches complexes de saveurs dans notre sauté végétarien, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "7hgxel15co",
     categoryId: "yqqod1wczh",
-    name: "Bol de Falafel Méditerranéen",
+    name: "Bol de Falafel Méditerranéen #2",
     description:
       "Plongez dans l'essence de ce bol de falafel méditerranéen, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "f1pec43rml",
     categoryId: "scl9ildmp4",
-    name: "Sauté Végétarien",
+    name: "Sauté Végétarien #6",
     description:
       "Ce sauté végétarien est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "4fnxr9qsde",
     categoryId: "scl9ildmp4",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #4",
     description:
       "Ce curry vert thaï est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "55kle2cbtw",
     categoryId: "k3ltj8nt8e",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #5",
     description:
       "Ce curry vert thaï est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
   {
     id: "6rvvu326ux",
     categoryId: "hrupu4tmkk",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #6",
     description:
       "Dégustez les couches complexes de saveurs dans notre curry vert thaï, un plat préparé avec soin et passion, promettant un voyage gastronomique unique.",
   },
   {
     id: "fpch4ysfes",
     categoryId: "yqqod1wczh",
-    name: "Soupe aux Légumes",
+    name: "Soupe aux Légumes #2",
     description:
       "Plongez dans l'essence de ce soupe aux légumes, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "tu175yr6bi",
     categoryId: "yqqod1wczh",
-    name: "Curry Vert Thaï",
+    name: "Curry Vert Thaï #7",
     description:
       "Plongez dans l'essence de ce curry vert thaï, un plat qui satisfait non seulement votre faim mais apporte également une fusion de l'art culinaire traditionnel et contemporain à votre table.",
   },
   {
     id: "djj5wowgrt",
     categoryId: "yqqod1wczh",
-    name: "Poivrons Farcis",
+    name: "Poivrons Farcis #3",
     description:
       "Ce poivrons farcis est un mélange délicieux de saveurs et de textures, combinant des ingrédients frais et des épices aromatiques pour une expérience culinaire vraiment mémorable.",
   },
