@@ -3,7 +3,13 @@ import mysql from "mysql2/promise";
 
 import { db } from "@/lib/db";
 
-import { categories, ingredients, recipeIngredient, recipes } from "./data";
+import {
+  categories,
+  ingredients,
+  recipeIngredient,
+  recipes,
+  users,
+} from "./data";
 
 type RecipeWithCategoryAndIngredients = {
   id: string;
@@ -53,15 +59,21 @@ async function POST() {
 
     await vectorDb.execute("DELETE FROM recipies");
 
+    await db.comment.deleteMany();
     await db.recipeIngredient.deleteMany();
     await db.ingredient.deleteMany();
     await db.recipe.deleteMany();
     await db.category.deleteMany();
+    await db.user.deleteMany();
 
     /**
      *
      */
 
+    await db.user.createMany({
+      data: users,
+      skipDuplicates: true,
+    });
     await db.category.createMany({
       data: categories,
       skipDuplicates: true,

@@ -1,3 +1,46 @@
+const users = [
+  {
+    id: "cjklsdjfsl1",
+    firstname: "Alice",
+    lastname: "Smith",
+    email: "alice.smith@example.com",
+    password: "password123",
+    allergens: ["Gluten", "Soy"],
+  },
+  {
+    id: "cjklsdjfsl2",
+    firstname: "Bob",
+    lastname: "Johnson",
+    email: "bob.johnson@mail.com",
+    password: "password123",
+    allergens: ["Dairy"],
+  },
+  {
+    id: "cjklsdjfsl3",
+    firstname: "Carol",
+    lastname: "Williams",
+    email: "carol.williams@test.org",
+    password: "password123",
+    allergens: ["Nuts", "Soy"],
+  },
+  {
+    id: "cjklsdjfsl4",
+    firstname: "David",
+    lastname: "Brown",
+    email: "david.brown@sample.net",
+    password: "password123",
+    allergens: [],
+  },
+  {
+    id: "cjklsdjfsl5",
+    firstname: "Eve",
+    lastname: "Jones",
+    email: "eve.jones@demo.co",
+    password: "password123",
+    allergens: ["Gluten", "Dairy", "Soy"],
+  },
+];
+
 const categories = [
   {
     id: "hrupu4tmkk",
@@ -1213,4 +1256,4 @@ const recipeIngredient = [
   },
 ];
 
-export { categories, recipes, ingredients, recipeIngredient };
+export { users, categories, recipes, ingredients, recipeIngredient };
